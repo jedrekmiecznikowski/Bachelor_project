@@ -1,0 +1,69 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Examples
+{% endblock %}
+
+{% block content %}
+<style type="text/css">
+ol {
+  font-weight: bold;
+}
+</style>
+<p>
+  Here are some examples, please read them carefully. If you don't understand something here, be sure to ask the experimenter who will be able to help you.<br>
+  <ol>
+    <li>
+      <strong>Non-matching numbers</strong><br>
+        <span style="font-weight: normal">
+          Player 1 rolls a 5, Player 2 rolls a 1. Both players report their numbers accurately to the leader.
+          Because their numbers do not match, the leader does not need to make a decision, and all players get 0 points this round. <i>This refers to outcome 1 in the graphic (see below).</i>
+        </span>
+      </li>
+    <br>
+    <li>
+      <strong>Accurate report of matching numbers</strong><br>
+      <span style="font-weight: normal">
+        Player 1 rolls a 6, Player 2 rolls a 6. Both players report their numbers accurately to the leader.
+        Because they report matching numbers, the leader faces the decision whether to rely on their report, or whether to verify it. <br><br>
+
+        Let's say the leader decides to verify. Verifying comes at a cost, however: even though the numbers were accurately reported, all players only get <i>half</i> the amount of points this round (i.e.  6 / 2 = 3 points).
+        <i>This refers to scenario 2 in the graphic.</i><br><br>
+
+        Note: if the leader chose to rely here, all players would have gotten 6 points this round. <i>This refers to scenario 3 in the graphic.</i>
+      </span>
+    </li>
+    <br>
+    <li>
+      <strong>Inaccurate report of matching numbers</strong><br>
+      <span style="font-weight: normal">
+        Player 1 rolls a 5, Player 2 rolls a 3. Player 1 reports the rolled number accurately, but Player 2 chooses to also report a 5.
+        Because the numbers match, the leader again faces the decision to rely or verify. <br><br>
+
+        This time, the leader decides to rely. Even though this report is inaccurate, this means that in {{ Constants.LoseGameNegPercent }}% of the times, all players will receive 5 points.
+        However, in {{ Constants.LoseGamePercent }}% of the times, the group will lose the game, meaning that all players will stop playing, and lose all their earnings they have made so far.
+        Thus, if they so far had earned 50 points, they will end the game with 0 points. <i>This refers to scenario 5 in the graphic.</i> <br><br>
+        If the leader had chosen to verify, the lie would have been discovered, and all players would have received 0 points this round.
+        However, because the lie was discovered, there would have been no chance of losing the game, and the group would continue to play the game, keeping their previous profits. <i>This refers to scenario 4 in the graphic.</i>
+      </span>
+    </li>
+  </ol>
+</p>
+<p>
+  Below, you can again find the structure of the game. <br>
+  Keep in mind that this game has multiple rounds. <strong>The number of rounds is {{ Constants.num_rounds }}. You are {{player.role}}.</strong> <br><br>
+</p>
+
+<p>
+  <img src="{% static "LCG/structure/Structure_scenarios_003.png" %}" width="80%" align = "middle">
+</p>
+
+<p>
+  If you are sure that you've understood the rules and structure of the game, you can click "Next" at the bottom of this page, and the game will start. <br><br>
+  <i>Note:</i> This is a multiplayer game. Therefore, you might need to wait for a while for your co-players to also go through the instructions of the game. The game will start only once all of you have clicked "next".
+  Also, there may be longer waiting periods throughout the game as your co-players make their turns.
+</p>
+    {% next_button %}
+
+{% endblock %}

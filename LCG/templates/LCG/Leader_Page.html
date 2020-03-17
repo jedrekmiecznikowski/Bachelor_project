@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Leader Decision
+{% endblock %}
+
+{% block content %}
+
+    <p> <strong>It's your turn!</strong> The team has rolled matching numbers, and you need to decide whether you want to rely or verify. </p>
+    <p> Player 1 has reported to have rolled a {{ reported_roll_p1 }}. </p>
+    <p> Player 2 has reported to have rolled a {{ reported_roll_p2 }}. </p>
+    <p>  Decide to Rely or Verify! </p>
+    <div>
+      <button name="checked" value="True" class="btn btn-primary btn-large">Verify!</button>
+      <button name="checked" value="False" class="btn btn-primary btn-large">Rely!</button>
+    </div>
+
+{% endblock %}

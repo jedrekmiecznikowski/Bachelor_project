@@ -1,0 +1,76 @@
+{# TODO: find the right framing #}
+
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+Game 2: A Joint Project
+{% endblock %}
+
+{% block content %}
+<p>
+  Now, you will play a second game, which models a joined project. <br>
+  <strong>Important:</strong> you will play together with the <i>same</i> people you have played with before.
+</p>
+<p>
+  In this game, your group has the opportunity to undertake a joint project. Each participant in
+  the group decides how much she or he is going to contribute to the project.
+</p>
+<p>
+  The amount you can contribute depends on your group's performance in the previous game.
+  During the last game, you have earned {{ cumulative_payoff }}. In addition to that, you are also given a further endowment of {{ Constants.endowment }}.<br><br>
+  Thus, the maximum amount you can contribute is: {{ Constants.endowment }} + {{ cumulative_payoff }} = {{ max_amount }}.<br>
+  Your contribution can be <i>any number from 0 to {{ max_amount }}</i>.
+</p>
+<br><br>
+
+<h4>Payoffs</h4>
+<p>
+  The earnings from the project are calculated as follows:<br>
+  The contributions of all {{ Constants.players_per_group }} participants are added up, and are <i>multiplied by a factor of {{ Constants.multiplier }}</i>.
+  The resulting amount is the total earnings from the project, which is
+  evenly split among all {{ Constants.players_per_group }} players.
+</p>
+<p>
+  <strong>Your payoff equals your earnings from the project, plus the amount you did not contribute.</strong>
+</p>
+<br><br>
+
+<h4>Examples</h4>
+<p>
+  Here are three examples of how individual contributions lead to payouts.
+</p>
+<p>
+  <ol>
+    <li>
+      <strong>All players contribute the maximum amount.</strong><br>
+      In this case, the common pot will be {{ max_amount }} + {{ max_amount }} + {{ max_amount }} = {{ example1_sum }}. <br>
+      As described, the pot will be multiplied by {{ Constants.multiplier }}, and then split equally. <br><br>
+      Thus, in this case everyone will receive: ({{ example1_sum }} * {{ Constants.multiplier }}) : 3 = {{ example1_final }}
+    </li>
+    <br>
+    <li>
+      <strong>Two players contribute the maximum amount, and one player doesn't contribute anything at all.</strong> <br>
+      In this case, the common pot will be {{ max_amount }} + {{ max_amount }} + 0 = {{ example2_sum }}. <br>
+      Again, the pot will be multiplied by {{ Constants.multiplier }}, and then split equally. <br><br>
+
+      Thus, the players who contributed the maximum amount will receive: ({{ example2_sum }} * {{ Constants.multiplier }}) : 3 = {{ example2_final }} <br>
+      The player who did not contribute anything, however, will receive: {{ max_amount }} + {{ example2_final }} = {{ example2_p3 }}.
+    </li>
+    <br>
+    <li>
+      <strong>No player contributes anything.</strong> <br>
+      If no player contributes anything, payout is simple. There is nothing in the common pot, so there is nothing to multiply and distribute. <br>
+      Thus, all players simply keep what they had earned so far: {{max_amount}}.
+    </li>
+  </ol>
+</p>
+<br>
+<p>
+  Click "Next" to make your contribution.
+</p>
+<br>
+
+{% next_button %}
+
+{% endblock %}

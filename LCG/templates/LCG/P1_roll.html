@@ -1,0 +1,38 @@
+{# TODO: test in other browsers / COBE lab #}
+
+{% extends "global/Page.html" %}
+{% load otree %}
+{% block styles %}
+<style type="text/css">
+  video{width:250px;height:250px;border:0;}
+  .show{display:block;}
+  .hide{display:none;}
+</style>
+{% endblock%}
+
+{% block title %}
+Player 1 Roll
+{% endblock %}
+
+{% block content %}
+<script type="text/javascript">
+  function showImg(){
+    var video = document.getElementById('Dice');
+    video.className = 'show';
+  video.play()}
+</script>
+<p>
+  <strong>It's your turn!</strong> Click the button to roll the die.<br><br>
+  <button id = 'RollButton' type="button" onclick="showImg(); getElementById('RollButton').style.display = 'block';
+  this.style.display = 'none'">Roll the Die!</button><br>
+  <video muted id = 'Dice' class="hide" controls>
+    <source src="{% static video_path_mp4 %}" type="video/mp4">
+    <source src="{% static video_path_wmv %}" type="video/wmv">
+      Browser does not support video tag...
+  </video>
+</p>
+<p>
+  {% formfield group.reported_roll_p1 %}
+</p>
+{% next_button %}
+{% endblock %}

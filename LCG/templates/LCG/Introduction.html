@@ -1,0 +1,81 @@
+
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Rely or Verify Game
+{% endblock %}
+
+{% block content %}
+<p>
+  As introduced, this study involves two separate games. Now, you will begin with the first game, the "Rely or Verify" game!<br><br>
+
+  In this game, you will play together with two other players that are randomly chosen from the group of participants in this session.
+  Your identity and that of your co-players will remain anonymous.<br><br>
+
+  This game is a multiplayer dice roll game with three people, all of which take on different roles in the game.<br>
+  Players 1 and 2 will form a team. Player 3 will be the leader of the group.<br>
+  <strong>You are {{ player.role }}.</strong> <br><br>
+
+
+  <strong>The game has the following structure:</strong>
+</p>
+
+<ol>
+  <li>Player 1 rolls a die and reports his / her outcome.</li>
+  <li>Player 2 sees what Player 1 has reported. Then, Player 2 rolls a die and reports their outcome.</li>
+  <li>If the reported numbers don't match, nothing happens, and there is no payoff this round.</li>
+  <li>If the reported numbers match, the leader can decide whether to rely on the group's report, or to verify it.</li>
+  <li>Depending on the leader's choice, the rolled number, and whether the team's report was correct, the payoff for this round is determined (see below).</li>
+  <li>The game is repeated for {{ Constants.num_rounds }} rounds.</li>
+</ol>
+<br>
+
+<h3>Payoff Calculations</h3>
+<p>
+  The precise payoff varies depending on team performance and leader choice
+  (keep in mind that points will converted to kr at the end of this experiment in a ratio of 2 points = 1 kroner!). <br><br>
+
+  <strong>If the reported numbers don't match, no one will receive any points this round.</strong>
+  If the reported numbers match, there are four different possible scenarios:
+
+  <ol>
+    <li><strong>Leader Relies (no checking)</strong></li>
+    <ol>
+      <li>
+        If the team's report was correct, all players receive same amount of points as the reported number.
+        For example, if both players reported a 5, all players will get 5 points.
+      </li>
+      <li>
+        If the team's report was incorrect, all players receive the same amount of points as the rolled number.
+        However, <strong>there is a {{ Constants.LoseGamePercent }} % chance your team will lose the game.</strong>
+        Losing the game means that you will lose all earnings you have made so far, and the game will end.<br><br>
+      </li>
+    </ol>
+    <li><strong>Leader Verifies (checks results)</strong></li>
+    <ol>
+      <li>
+        If the team's report was correct, all players receive half the amount of points as the reported number.
+        For example, if both players reported a 5, all players will get 2.5 points.
+      </li>
+      <li>
+        If the team's report was incorrect, all players receive 0 points this round.
+      </li>
+    </ol>
+  </ol>
+  <br>
+
+  <strong>The exact game structure is drawn out below</strong> (you are {{ player.role }}). <br>
+    On the next page, you will find some examples.
+</p>
+<br><br>
+<img src="{% static "LCG/structure/Structure_scenarios_blank_003.png" %}" width="80%" align = "middle">
+<br><br><br>
+<p>
+  Click "next" to see some examples.
+</p>
+
+
+    {% next_button %}
+
+{% endblock %}

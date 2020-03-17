@@ -1,0 +1,80 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+Results
+{% endblock %}
+
+{% block content %}
+{% if group.reported_roll_p1 == group.reported_roll_p2 %}
+  {% if player.role == 'Player 1' %}
+    <p>You rolled a <strong>{{ actual_roll_p1 }}</strong>.<br>
+    You reported a <strong>{{ group.reported_roll_p1 }}</strong>.<br>
+    <i>Player 2</i> reported a <strong>{{ group.reported_roll_p2 }}</strong>.</p>
+
+    {% if group.checked == True %}
+      {% if group.team_cheated == 1 %}
+        <p>The leader decided to verify your reports, and you got caught cheating!</p>
+      {% else %}
+        <p>The leader decided to verify your reports, but you were honest!</p>
+      {% endif %}
+
+    {% else %}
+      {% if group.p1_cheat == 1 %}
+        <p>The leader decided to rely on your reports, and your cheating went unnoticed!<br>
+        This means you have a {{Constants.LoseGamePercent}}% chance of losing the game right now!</p>
+      {% else %}
+        <p>The leader decided rely on your reports.</p>
+      {% endif %}
+    {% endif %}
+    <p>Your outcome for this round is therefore: <strong>{{ player.payoff|c }}</strong>.</p>
+    <p>Your cumulative payoff (overall) bonus payment is <strong>{{ cumulative_payoff|c }}</strong>.</p>
+
+  {% elif player.role == 'Player 2'%}
+    <p><i>Player 1</i> reported a <strong>{{ group.reported_roll_p1 }}.</strong><br>
+    You rolled a <strong>{{ actual_roll_p2 }}</strong>.<br>
+    You reported a <strong>{{ group.reported_roll_p2 }}</strong>.</p>
+    {% if group.checked == True %}
+      {% if group.p2_cheat == 1 %}
+        <p>The leader decided to verify your reports, and you got caught cheating!</p>
+      {% else %}
+        <p>The leader decided to verify your reports, but you were honest!</p>
+      {% endif %}
+
+    {% else %}
+      {% if group.team_cheated == 1 %}
+        <p>The leader decided to rely on your reports, and your cheating went unnoticed!<br>
+        This means you have a {{Constants.LoseGamePercent}}% chance of losing the game right now!</p>
+      {% else %}
+        <p>The leader decided to rely on your reports!</p>
+      {% endif %}
+    {% endif %}
+    <p>Your outcome for this round is therefore: <strong>{{ player.payoff|c }}.</strong></p>
+    <p>Your cumulative payoff (overall) bonus payment is <strong>{{ cumulative_payoff|c }}.</strong> </p>
+
+  {% else %}
+    <p><i>Player 1</i> reported a <strong>{{ group.reported_roll_p1 }}</strong>.<br>
+    <i>Player 2</i> reported a <strong>{{ group.reported_roll_p2 }}</strong>.</p>
+    {% if group.checked == True %}
+      {% if group.team_cheated == 1 %}
+        <p>You decided to verify your team's reports, and you caught them cheating!</p>
+      {% else %}
+        <p>You decided to verify your team's reports, but they were honest!</p>
+      {% endif %}
+    {% else %}
+      <p>You decided to rely on your team's reports.<br>
+      This means that <i>if</i> your team cheated, you have a {{ Constants.LoseGamePercent }}% chance of losing the game right now!</p>
+    {% endif %}
+    <p>Your outcome for this round is therefore: <strong>{{ player.payoff|c }}.</strong></p>
+    <p>Your cumulative payoff (overall) bonus payment is <strong>{{ cumulative_payoff|c }}.</strong></p>
+  {% endif %}
+
+{% else %}
+    <p><i>Player 1</i> reported a roll of <strong>{{group.reported_roll_p1}}</strong>, and <i>Player 2</i> reported a roll of <strong>{{ group.reported_roll_p2 }}</strong>.</p>
+    <p>Because these numbers don't match, there is no payoff this turn. Your payment is <strong>{{ player.payoff }}</strong>.</p>
+    <p>Your cumulative payoff (overall) bonus payment is <strong>{{ cumulative_payoff|c }}</strong></p>
+{% endif %}
+<p>{% next_button %}</p>
+
+{% include Constants.instructions_template %}
+{% endblock %}

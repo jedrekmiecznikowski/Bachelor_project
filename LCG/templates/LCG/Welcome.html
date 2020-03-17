@@ -1,0 +1,33 @@
+
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Introduction
+{% endblock %}
+
+{% block content %}
+<p>Welcome to this experiment!</p>
+
+<p>
+  In this study, you will be playing together with two other players, who are chosen randomly from all participants.
+</p>
+<p>
+  This study involves two separate games. The first will be a dice roll game, and the second will resemble a joint project.
+  Note: your performance in the first game will carry over to the second game. <br><br>
+  <strong>Your overall performance will also determine your overall pay!</strong> <br><br>
+
+  You are awarded with a show up fee of {{ show_up_fee_kr }}. You will keep all earnings you will make above that. <br><br>
+
+  <strong>Please note:</strong> In the games of this experiment, you will earn points.
+  These points will get converted into real money in <strong>a ratio of 2 : 1</strong>.
+  Thus, if you have earned 50 points in the game, you will get a 25 kr bonus payment in this experiment.
+</p>
+<p>
+  Before we can start with the first game, you will need to fill out some basic questions about yourself.
+  As soon as you are ready to start, please click the "Next" button below, which will lead you to the questionnaire.
+</p>
+
+    {% next_button %}
+
+{% endblock %}

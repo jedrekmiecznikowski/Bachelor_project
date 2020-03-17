@@ -1,0 +1,53 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    You have reached the end of this study!
+{% endblock %}
+
+{% block content %}
+<p>
+  The experiment is now over. Thank you very much for taking part! <br><br>
+
+   <strong>IMPORTANT!</strong> Please do not leave your seat. The experimenter will come to you
+   and bring you the payment forms. <br><br>
+   As described at the start of the experiment, your pay will be calculated by adding your show up fee ({{ show_up_fee_kr }}) with
+   your earnings from the two games. <br><br>
+
+   Regarding your overall performance, you have gained {{ player.payoff }} in this study.
+   As described at the start of the study, points will be converted into real money in a ratio of 2 : 1 (i.e., 2 points equal 1 kr). <br><br>
+
+   For you, this means: <br>
+
+   <table class="table-condensed" style="width:500px; margin-top:20px;">
+     <th>Your Performance</th>
+     <tr>
+       <td>Performance <br> <i>(in points)</i></td><td>{{ player.payoff }}</td>
+     </tr>
+     <tr>
+       <td>Performance <br> <i>(in kr)</i></td><td>{{ game_payoff_currency }}</td>
+     </tr>
+
+     <tr><td colspan="2"><hr/></td></tr>
+     <th>Your Payout</th>
+
+     <tr>
+       <td>Performance <br> <i>(in kr)</i></td><td>{{ game_payoff_currency }}</td>
+     </tr>
+     <tr>
+       <td>Show up fee:</td><td>{{ show_up_fee_kr }}</td>
+     </tr>
+
+     <tr><td colspan="2"><hr/></td></tr>
+
+     <tr>
+       <td><strong>Total</strong>:</td><td><strong>{{ final_payoff }}</strong></td>
+     </tr>
+   </table>
+</p>
+<br><br>
+
+<h4><strong>Please stay seated, the experimenter will come to you!</strong></h4>
+
+
+{% endblock %}

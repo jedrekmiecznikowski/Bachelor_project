@@ -1,0 +1,26 @@
+
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+You have lost!
+{% endblock %}
+
+{% block content %}
+<p>
+  The leader decided to rely on the teams report, even though it was false! <br><br>
+
+  As stated at the outset, there is {{ Constants.LoseGamePercent }}% chance that unchecked cheating will result in <strong>the loss of <u>all</u> of your income in this game.</strong><br>
+</p>
+
+<h4>Important!</h4>
+<p>
+  Even though you have lost the first game, <strong>the experiment is not over yet!</strong><br>
+  As stated, this experiment involves two games. The first game has finished, and now you will be directed to the second game. <br><br>
+
+  <i>Please note:</i> Due to technical reasons, it may take some time for the second game to start, after you click "Next". Please remain seated.
+</p>
+
+{% next_button %}
+
+{% endblock %}

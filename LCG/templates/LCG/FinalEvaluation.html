@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    This is the end of the Rely or Verify game
+{% endblock %}
+
+{% block content %}
+<p>
+  You have now finished the rely or verify game! <br>
+  <i>Important!</i> The experiment is not finished yet! <strong>Please remain at your seat</strong>.
+</p>
+<p>
+  In this game, you have made an overall profit of <strong>{{ cumulative_payoff|c }}</strong>. <br>
+  You will keep this payoff for the second game!
+</p>
+<p>
+  Click "Next" in order to learn more about the second game in this experiment.
+</p>
+{% next_button %}
+
+{% endblock %}

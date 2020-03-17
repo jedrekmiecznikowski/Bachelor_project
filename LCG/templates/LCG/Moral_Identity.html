@@ -1,0 +1,52 @@
+
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+Questionnaire Part 1
+{% endblock %}
+
+{% block content %}
+<p>
+  <strong> Before you will see the results of the second game, please read the following and then answer the questions below.</strong>
+</p>
+
+<p>
+  Listed below are some characteristics that may describe a person: <br>
+  <ul>
+    <li>caring</li>
+    <li>compassionate</li>
+    <li>fair</li>
+    <li>friendly</li>
+    <li>generous</li>
+    <li>hardworking</li>
+    <li>helpful</li>
+    <li>honest</li>
+    <li>kind</li>
+  </ul>
+</p>
+<p>
+  The person with these characteristics could be you or it could be someone else.
+  For a moment, visualize in your mind the kind of person who has these characteristics.
+  Imagine how that person would think, feel, and act. <br><br>
+  When you have a clear image of what this person would be like, answer the following questions.
+</p>
+
+
+<table class="table">
+  <tr>
+    <th width = "40%"></th><td width = "12%">strongly disagree</td><td></td><td></td><td></td><td width = "12%">strongly agree</td>
+  </tr>
+    {% for field in form %}
+        <tr>
+            <th width = "40%">{{ field.label }}</th>
+            {% for choice in field %}
+                <td width = "12%" align = "center">{{ choice }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+
+{% next_button %}
+
+{% endblock %}
