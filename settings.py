@@ -5,6 +5,7 @@ from os import environ
 # the session config can be accessed from methods in your apps as self.session.config,
 # e.g. self.session.config['participation_fee']
 
+# mTurk settings. Do not change!
 mTurk_hit_settings = {
     'keywords': ['bonus', 'study'],
     'title': 'Rely or Verify',
@@ -37,6 +38,7 @@ mTurk_hit_settings = {
     ]
 }
 
+
 SESSION_CONFIG_DEFAULTS = {
     'real_world_currency_per_point': 0.05,
     'participation_fee': 0.50,
@@ -53,7 +55,6 @@ SESSION_CONFIGS = [
         'app_sequence': ['LCG']
     },
 ]
-# see the end of this file for the inactive session configs
 
 
 # ISO-639 code
@@ -68,6 +69,7 @@ POINTS_DECIMAL_PLACES = 2
 ROOMS = [
 ]
 
+# Do not change any of the following!
 
 # AUTH_LEVEL:
 # this setting controls which parts of your site are freely accessible,
@@ -79,13 +81,12 @@ ROOMS = [
 #   anybody can play a demo version of your game, but not access the rest
 #   of the admin interface, set it to DEMO.
 
-# for flexibility, you can set it in the environment variable OTREE_AUTH_LEVEL
+
 AUTH_LEVEL = environ.get('OTREE_AUTH_LEVEL')
 
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
-
 
 # Consider '', None, and '0' to be empty/false
 DEBUG = (environ.get('OTREE_PRODUCTION') in {None, '', '0'})
@@ -99,14 +100,11 @@ SECRET_KEY = 'ahssood=cw(3!ls+*^6opq6t9u&ss40lcekefxbv#57=b!s3mb'
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
 INSTALLED_APPS = ['otree', 'otree_tools', 'captcha']
-
 EXTENSION_APPS = ['otree_tools']
-
 
 # for mTurk
 AWS_ACCESS_KEY_ID = environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = environ.get('AWS_SECRET_ACCESS_KEY')
-
 
 # for Captcha
 RECAPTCHA_PUBLIC_KEY = '6Ldf7bcUAAAAAMzBo1iTCUFmMEFK-HGmLMEYNnBl'
