@@ -28,7 +28,7 @@ When testing your otree study locally (using otree devserver), it is important t
 
 
 # Important info
-1. This repo is connected to the server hosting www.be-lab.au.dk. Changes made here can be pushed to the server.
+1. This repo is connected to the server hosting https://be-lab.au.dk/. Changes made here can be pushed to the server.
 2. Pushing changes to this repo will not immediately update the oTree version running on be-lab.au.dk. For this, oTree has to be restarted server side. Currently, the only person who has rights to do so is Simon. 
 3. It's best to use this repo to develop and test your study locally (using devserver). This way, chances of it working when pushing it to the server are highest (though not guaranteed, as there's always some small things that can go wrong). 
 4. Regardings settings.py: Do not change any of the authentication or mTurk parameters! Only make changes for Session Configs and Rooms, if necessary.
@@ -38,8 +38,5 @@ When testing your otree study locally (using otree devserver), it is important t
 1. Set up mTurk API credentials
 2. Push first version of Jedrek's study to repo
 3. Pretest Jedrek's study on server
-
-
-
 
 
