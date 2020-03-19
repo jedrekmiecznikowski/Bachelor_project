@@ -1,14 +1,20 @@
 # Jedrek's oTree folder on Be-Lab server
 
-This repo exists to host Jedrek's oTree experiment for his BA. Below follow a few technical details, and a short description of existing projects.
+This repo exists to host Jedrek's oTree experiment for his BA. 
+
+Below follow a few technical details, and a short description of existing projects.
 
 ## Rely or Verify
 
 This is just an illustrative project, to check whether the server works - currently has a small bug for Player 1. 
 
+
+
 ## Jedrek's Project
 
 ... to come ...
+
+
 
 
 # oTree version and extra packages
