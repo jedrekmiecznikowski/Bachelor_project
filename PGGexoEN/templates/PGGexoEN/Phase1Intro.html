@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Comprehension test
+{% endblock %}
+
+{% block content %}
+
+<p> <b> In this section we will ask you three questions meant to test your familiarity with the instructions. </b> <br>
+</p>
+
+{% formfield player.comprehension1 %}
+
+
+{% formfield player.comprehension2 %}
+
+
+{% formfield player.comprehension3 %}
+
+<hr> </hr>
+
+    {% next_button %}
+
+<hr> </hr>
+    <p> <i>Help: If you have any questions, please raise your hand.</i></p>
+{% endblock %}
+
+{% block styles %}
+    <style>
+
+            .errorlist {
+                display: none;
+            }
+
+    </style>
+{% endblock %}
+
