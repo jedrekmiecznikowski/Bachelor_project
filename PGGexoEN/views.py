@@ -46,8 +46,8 @@ class Contribute(Page):
     form_model = models.Player
     form_fields = ['contribution']
 
-    def set_threshold(self):
-        return
+ #   def set_threshold(self):
+  #      return
 
 
 class ResultsWaitPage(WaitPage):
@@ -62,8 +62,8 @@ class Results(Page):
     """Players payoff: How much each has earned"""
     timeout_seconds = 300
 
-    def set_payoff(self):
-        return
+ #   def set_payoff(self):
+  #      return
 
     def vars_for_template(self):
         return {
@@ -86,8 +86,8 @@ class Earnings(Page):
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
 
-    def set_payoff(self):
-        return
+ #   def set_payoff(self):
+  #      return
 
 page_sequence = [
     IntroWaitPagePhase1,
