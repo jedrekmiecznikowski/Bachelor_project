@@ -1,0 +1,19 @@
+
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+Questionnaire part 2
+{% endblock %}
+
+{% block content %}
+<p> <strong>Please take at least 5 minutes to answer the following questions. </strong></p>
+
+
+{% formfields %}
+
+{% next_button %}
+
+<hr> </hr>
+    <p> <i>Help: If you have vital questions, you can email the researcher (Jedrzej) at 201811497@post.au.dk</i></p>
+{% endblock %}

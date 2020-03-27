@@ -10,18 +10,18 @@ doc = """The English version of Public Goods Game with exogeneous threshold
 
 class Constants(BaseConstants):
     name_in_url = 'PGGexoEN'
-    players_per_group = 2
-    num_rounds = 2
+    players_per_group = 5
+    num_rounds = 25
 
-    endowment = c(10)
-    efficiency_factor = 2
-    cost_parameter_low = 1
-    cost_parameter_high = 1
+    endowment = c(55)
+    efficiency_factor = 2 #step return
+    cost_parameter_low = 1 #useless because no high/low players
+    cost_parameter_high = 1 #ibid
 
     participation_fee = 0
-    euro_per_point = 0.45
+    euro_per_point = 0.0647058823529412
 
-    phase1 = [1, 2]
+    phase1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
 
     """"List of round numbers which are part of a distribution rule. """
 
@@ -29,7 +29,7 @@ class Constants(BaseConstants):
 
     """"The random round generator for the three payment periods to calculate money payoff."""
 
-    thresholdexo = [25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25,25]
+    thresholdexo = [125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125]
     """"The threshold levels in each round, starting in round 1 to round 25."""
 
 
@@ -61,7 +61,7 @@ class Group(BaseGroup):
             """"This sets the distribution rule of each phase."""
 
     def set_threshold(self):
-        for x in range(1, 3):
+        for x in range(1, 26):
             if self.round_number == x:
                 self.threshold = Constants.thresholdexo[x-1]
 
@@ -109,7 +109,7 @@ class Group(BaseGroup):
         else:
             if self.total_contribution < self.threshold:
                 for p in self.get_players():
-                    p.payoff_r = p.value
+                    p.payoff_r = p.value + p.contribution
             else:
                 for p in self.get_players():
                     p.payoff_r = p.value + (self.bonus / Constants.players_per_group)
@@ -149,27 +149,6 @@ class Player(BasePlayer):
         doc=""""The player's vote for distribution rule in phase 3."""
     )
 
-    comprehension1 = models.PositiveIntegerField(label='If you invested 4 tokens in the public good, how much of your income do you still have left?')
-
-    def comprehension1_error_message (self, value):
-        print('values is',value)
-        if value != 6:
-            return "Wrong answer to question 1. Please read the instructions again"
-
-    comprehension2 = models.FloatField(label='There are 10 people in your group. Your income (endowment) is 10 tokens. The public good threshold is 25 tokens. The group bonus for achieving the threshold is 50 tokens, equally divided between the group, e.g. 5 tokens for each player. You have contributed 3,5 tokens towards the public good. The contributions of the other 9 people in your group are as follows {0; 2.5; 3; 0; 2; 2.5; 3; 3; 4}. What is your payoff for this round?')
-
-    def comprehension2_error_message (self, value):
-        print('value is',value)
-        if value != 7.5:
-            return "Wrong answer to question 2. Please read the instructions again. Remember that if the threshold is not reached - no bonus is paid and the investments are not refunded."
-
-    comprehension3 = models.PositiveIntegerField(label='If you invested 4 tokens in the public good, how much of your income do you still have left?')
-
-    def comprehension3_error_message (self, value):
-        print('value is',value)
-        if value != 10:
-            return "Wrong answer to question 3. Please read the instructions again. Remember that if the threshold is reached - equal bonus is paid to every member of the group."
-
 
     payoff_r = models.CurrencyField(
         doc=""""payoff in a certain round"""
@@ -180,13 +159,39 @@ class Player(BasePlayer):
          it's not viable"""
     )
 
-    earnings_phase1 = models.CurrencyField()
-    paid = models.CurrencyField()
+    heard_PGG = models.BooleanField(
+        label="Have you previously heard of a “public goods game”? ",
+        choices=[
+            [True, 'Yes'],
+            [False, 'No'],
+
+        ],
+        widget=widgets.RadioSelectHorizontal
+    )
+
+    fairness = models.PositiveIntegerField(
+        label="What is a 'fair' contribution in the public good? (number)",
+        min=0, max=Constants.endowment
+    )
+
+    fairness_explore = models.TextField(
+        label="Are you concerned about 'fairness' in making your contribution decision? Please elaborate briefly on your idea of 'fairness' and how important it is to you"
+    )
+
+    reasons_explore = models.TextField(
+        label="Please state the reasons for your contributions. Elaborate on your motives, why did you make the decisions you did? Which of the reasons was the most important? "
+    )
+
+    earnings_phase1 = models.PositiveIntegerField()
+    paid = models.PositiveIntegerField()
+
 
     def set_payoff(self):
-        self.earnings_phase1 = self.in_round(1).payoff_r+self.in_round(2).payoff_r
+        # must add all rounds one by one to self.earnings_phase1
+        self.earnings_phase1 = self.in_round(1).payoff_r+self.in_round(2).payoff_r+self.in_round(3).payoff_r+self.in_round(4).payoff_r+self.in_round(5).payoff_r+self.in_round(6).payoff_r+self.in_round(7).payoff_r+self.in_round(8).payoff_r+self.in_round(9).payoff_r+self.in_round(10).payoff_r+self.in_round(11).payoff_r+self.in_round(12).payoff_r+self.in_round(13).payoff_r+self.in_round(14).payoff_r+self.in_round(15).payoff_r+self.in_round(16).payoff_r+self.in_round(17).payoff_r+self.in_round(18).payoff_r+self.in_round(19).payoff_r+self.in_round(20).payoff_r+self.in_round(21).payoff_r+self.in_round(22).payoff_r+self.in_round(23).payoff_r+self.in_round(24).payoff_r+self.in_round(25).payoff_r
         self.payoff = self.earnings_phase1
         self.paid = (self.payoff * Constants.euro_per_point) + Constants.participation_fee
 
         """"The calculation of the payoffs during the random periods
             and total earnings as well as the to be paid amount."""
+

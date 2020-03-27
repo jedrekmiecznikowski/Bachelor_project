@@ -7,15 +7,14 @@
 
 {% block content %}
 
-<p> You are about to play Round {{ subsession.round_number }}.<br>
-    The Distribution rule for this round is <b>{{ group.distribution_rule }}</b>
-
-</p>
-
+<p> You are about to play Round <b>{{ subsession.round_number }}</b>.<br></p>
+<p><span style="font-weight: 400;">A short reminder of the rules. All of the players receive equal income and an equal share of the bonus if the threshold is reached. If the threshold is not reached, all contributions get returned to their owners.</span></p>
+<p><span style="font-weight: 400;"> If total contributions in your group equal 125 points or more and you have contributed X, your earnings from this round will be: </span><em><span style="font-weight: 400;">&nbsp;</span></em><em><span style="font-weight: 400;">Your earnings = your income (55 points)&nbsp; &ndash; your contribution(X) + additional points (50)</span></em></p>
+<p><span style="font-weight: 400;">If, on the other hand, total contributions in your group equal less than 125 points and you have contributed X, your earnings will simply be your income because of the full refund rule:&nbsp; </span><em><span style="font-weight: 400;">Your earnings = your income (55 points)</span></em></p>
 <hr> </hr>
 
     {% next_button %}
 
 <hr> </hr>
-    <p> <i>Help: If you have any questions, please raise your hand.</i></p>
+    <p> <i>Help: If you have vital questions, you can email the researcher (Jedrzej) at 201811497@post.au.dk</i></p>
 {% endblock %}

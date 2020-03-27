@@ -17,26 +17,6 @@ class IntroWaitPagePhase1(WaitPage):
 
 
 
-
-
-class Phase1Intro(Page):
-    """Introduction page for phase 1"""
-    def is_displayed(self):
-        return self.round_number == min(Constants.phase1)
-    form_model = models.Player
-    form_fields = ['comprehension1', 'comprehension2', 'comprehension3']
-    timeout_seconds = 360
-
-
-
-
-
-
-
-
-
-
-
 class DistributionRuleAnnounce(Page):
     timeout_seconds = 60
 
@@ -62,8 +42,6 @@ class Results(Page):
     """Players payoff: How much each has earned"""
     timeout_seconds = 300
 
- #   def set_payoff(self):
-  #      return
 
     def vars_for_template(self):
         return {
@@ -86,16 +64,35 @@ class Earnings(Page):
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
 
- #   def set_payoff(self):
-  #      return
+class Post_Questionnaire(Page):
+    """Introduction page for phase 1"""
+    def is_displayed(self):
+        return self.round_number == Constants.num_rounds
+    form_model = models.Player
+    form_fields = ['heard_PGG', 'reasons_explore']
+
+class Post_Questionnaire_2(Page):
+    """Introduction page for phase 1"""
+    def is_displayed(self):
+        return self.round_number == Constants.num_rounds
+    form_model = models.Player
+    form_fields = ['fairness', 'fairness_explore']
+
+class Thank_you(Page):
+    def is_displayed(self):
+        return self.round_number == Constants.num_rounds
+
+
 
 page_sequence = [
     IntroWaitPagePhase1,
-    Phase1Intro,
     DistributionRuleAnnounce,
     Contribute,
     ResultsWaitPage,
     Results,
     EarningsWaitPage,
-    Earnings
+    Earnings,
+    Post_Questionnaire,
+    Post_Questionnaire_2,
+    Thank_you
 ]
