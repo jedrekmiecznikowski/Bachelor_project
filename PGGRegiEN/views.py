@@ -23,7 +23,7 @@ class Pre_Questionnaire(Page):
     def is_displayed(self):
         return self.round_number == 1  # only show page at the first round
     form_model = "player"
-    form_fields = ["sona_id", "student", "business", "economics", "semester", "gender"]
+    form_fields = ["sona_id", "student", "semester", "gender"]
     pass
 class Consent_form(Page):
     """Consent form pending signature for processing data"""

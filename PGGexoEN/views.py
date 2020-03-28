@@ -69,7 +69,7 @@ class Post_Questionnaire(Page):
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
     form_model = models.Player
-    form_fields = ['heard_PGG', 'reasons_explore']
+    form_fields = ['business', 'economics', 'heard_PGG', 'reasons_explore']
 
 class Post_Questionnaire_2(Page):
     """Introduction page for phase 1"""

@@ -182,6 +182,27 @@ class Player(BasePlayer):
         label="Please state the reasons for your contributions. Elaborate on your motives, why did you make the decisions you did? Which of the reasons was the most important? "
     )
 
+
+    business = models.BooleanField(
+        label = "Do you or did you study one of the following programmes: "
+                 "Economics and Business Administration, BSc; Erhvervsøkonomi, HA; Erhvervsøkonomi med tilvalg; Erhvervsøkonomi og erhvervsret(HA(jur.)); Economics and Business Administration, MSc (cand.merc); Marketing and Management Communication?",
+        choices=[
+            [True, 'Yes'],
+            [False, 'No'],
+
+        ],
+        widget=widgets.RadioSelectHorizontal
+    )
+    economics = models.BooleanField(
+        label = "Do you or did you study one of the following programmes: Økonomi; Politik og økonomi; Matematik-økonomi?",
+        choices=[
+            [True, 'Yes'],
+            [False, 'No'],
+
+        ],
+        widget=widgets.RadioSelectHorizontal
+    )
+
     earnings_phase1 = models.PositiveIntegerField()
     paid = models.PositiveIntegerField()
 

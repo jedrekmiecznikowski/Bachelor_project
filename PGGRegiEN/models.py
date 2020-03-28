@@ -60,25 +60,7 @@ class Player(BasePlayer):
         ],
         widget=widgets.RadioSelectHorizontal
     )
-    business = models.BooleanField(
-        label = "Do you or did you study one of the following programmes: "
-                 "Economics and Business Administration, BSc; Erhvervsøkonomi, HA; Erhvervsøkonomi med tilvalg; Erhvervsøkonomi og erhvervsret(HA(jur.)); Economics and Business Administration, MSc (cand.merc)?",
-        choices=[
-            [True, 'Yes'],
-            [False, 'No'],
 
-        ],
-        widget=widgets.RadioSelectHorizontal
-    )
-    economics = models.BooleanField(
-        label = "Do you or did you study one of the following programmes: Økonomi; Politik og økonomi; Matematik-økonomi?",
-        choices=[
-            [True, 'Yes'],
-            [False, 'No'],
-
-        ],
-        widget=widgets.RadioSelectHorizontal
-    )
     semester = models.IntegerField(
         label="Which semester are you on or how many semesters did you complete at a higher education facility?",
         min=0, max=20,
