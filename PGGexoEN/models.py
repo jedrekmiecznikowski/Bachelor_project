@@ -4,8 +4,8 @@ from otree.api import (
 )
 import random
 
-doc = """The English version of Public Goods Game with exogeneous threshold
-"""
+doc = """The English version of Public Goods Game with exogeneous threshold"""
+
 
 
 class Constants(BaseConstants):
@@ -202,7 +202,6 @@ class Player(BasePlayer):
         ],
         widget=widgets.RadioSelectHorizontal
     )
-
     earnings_phase1 = models.PositiveIntegerField()
     paid = models.PositiveIntegerField()
 
@@ -215,4 +214,5 @@ class Player(BasePlayer):
 
         """"The calculation of the payoffs during the random periods
             and total earnings as well as the to be paid amount."""
+
 
