@@ -30,11 +30,11 @@
         <tr>
                 <td> {{ subsession.round_number }}</td>
                 <td> {{ group.threshold }}</td>
-            {%  for p in subsession.player_set.all %}
+            {%  for p in group.player_set.all %}
                 <td> {{ p.contribution }}</td>
             {% endfor %}
                 <td> {{ group.avg_contribution }}</td>
-            {% for p in subsession.player_set.all %}
+            {% for p in group.player_set.all %}
                 <td> {{ p.payoff_r }}</td>
             {% endfor %}
                 <td>{{ group.avg_payoff }}</td>
@@ -46,7 +46,6 @@
     <h4> Summary of contributions and profits this round:</h4>
 
         <table class="table-condensed" style="width:500px; margin-top:20px;">
-        <tr><td>You are player: </td><td><b>{{ player.id_in_group }}</b></td></tr>
         <tr><td>The distribution rule: </td><td> <b>{{ group.distribution_rule }}</b></td></tr>
         <tr><td>The group threshold: </td><td><b>{{ group.threshold }}</b></td></tr>
         <tr><td>Total group contribution: </td><td><b>{{ group.total_contribution }}</b></td></tr>

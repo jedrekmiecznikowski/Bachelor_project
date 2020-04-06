@@ -19,7 +19,7 @@ class Constants(BaseConstants):
     cost_parameter_high = 1 #ibid
 
     participation_fee = 0
-    euro_per_point = 0.0647058823529412
+    euro_per_point = 0.0651851851851852
 
     phase1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
 
@@ -109,7 +109,7 @@ class Group(BaseGroup):
         else:
             if self.total_contribution < self.threshold:
                 for p in self.get_players():
-                    p.payoff_r = p.value + p.contribution
+                    p.payoff_r = p.value
             else:
                 for p in self.get_players():
                     p.payoff_r = p.value + (self.bonus / Constants.players_per_group)
@@ -212,7 +212,7 @@ class Player(BasePlayer):
         self.payoff = self.earnings_phase1
         self.paid = (self.payoff * Constants.euro_per_point) + Constants.participation_fee
 
-        """"The calculation of the payoffs during the random periods
+        """"The calculation of the payoffs during the periods
             and total earnings as well as the to be paid amount."""
 
 

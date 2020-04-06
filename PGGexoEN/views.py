@@ -3,6 +3,16 @@ from ._builtin import Page, WaitPage
 from otree.api import Currency as c, currency_range
 from .models import Constants
 
+class GroupingWaitPage(WaitPage):
+    group_by_arrival_time = True
+
+    def is_displayed(self):
+        return self.round_number == 1
+
+    body_text = "Please wait"
+
+
+
 
 class IntroWaitPagePhase1(WaitPage):
     """WaitPage to continue when everyone is ready for the next phase"""
@@ -65,14 +75,14 @@ class Earnings(Page):
         return self.round_number == Constants.num_rounds
 
 class Post_Questionnaire(Page):
-    """Introduction page for phase 1"""
+    """First part of post coital questionnaire"""
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
     form_model = models.Player
     form_fields = ['business', 'economics', 'heard_PGG', 'reasons_explore']
 
 class Post_Questionnaire_2(Page):
-    """Introduction page for phase 1"""
+    """Second part of post coital questionnaire"""
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
     form_model = models.Player
@@ -85,6 +95,7 @@ class Thank_you(Page):
 
 
 page_sequence = [
+    GroupingWaitPage,
     IntroWaitPagePhase1,
     DistributionRuleAnnounce,
     Contribute,

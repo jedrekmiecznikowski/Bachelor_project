@@ -57,7 +57,7 @@ SESSION_CONFIGS = [
     {
         'name': 'public_Goods_Game_exoEN',
         'display_name': "Decision-making task",
-        'real_world_currency_per_point': 0.0647058823529412,
+        'real_world_currency_per_point': 0.0651851851851852,
         'participation_fee': 0,
         'num_demo_participants': 5,
         'app_sequence': ['PGGRegiEN', 'PGGexoEN']
