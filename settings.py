@@ -54,7 +54,16 @@ SESSION_CONFIGS = [
         'num_demo_participants': 3,
         'app_sequence': ['LCG']
     },
+    {
+        'name': 'public_Goods_Game_exoEN',
+        'display_name': "Decision-making task",
+        'real_world_currency_per_point': 0.0651851851851852,
+        'participation_fee': 0,
+        'num_demo_participants': 5,
+        'app_sequence': ['PGGRegiEN', 'PGGexoEN']
+    }
 ]
+
 
 
 # ISO-639 code
@@ -99,7 +108,7 @@ Choose a study design to demo it.
 SECRET_KEY = 'ahssood=cw(3!ls+*^6opq6t9u&ss40lcekefxbv#57=b!s3mb'
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
-INSTALLED_APPS = ['otree', 'otree_tools', 'captcha']
+INSTALLED_APPS = ['otree', 'otree_tools','captcha']
 EXTENSION_APPS = ['otree_tools']
 
 # for mTurk

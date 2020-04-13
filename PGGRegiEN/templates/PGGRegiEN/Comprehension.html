@@ -1,0 +1,40 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Comprehension test
+{% endblock %}
+
+{% block content %}
+
+<p> <b> In this section we will ask you three questions meant to test your familiarity with the instructions. </b> <br>
+</p>
+
+{% formfield player.comprehension1 %}
+
+
+{% formfield player.comprehension2 %}
+
+
+{% formfield player.comprehension3 %}
+
+<hr> </hr>
+
+    {% next_button %}
+
+<hr> </hr>
+    <p> <i>Help: If you have vital questions, you can email the researcher (Jedrzej) at 201811497@post.au.dk
+            <a href="https://www.dropbox.com/s/r12hef3m4d3r0jb/instructions%20%28final%29.pdf?dl=0" target = "_blank"><span style="font-weight: 400;">You can access and download the instructions for further reference here.</span></a> (opens in a new tab)
+</i></p>
+{% endblock %}
+
+{% block styles %}
+    <style>
+
+            .errorlist {
+                display: none;
+            }
+
+    </style>
+{% endblock %}
+

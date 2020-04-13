@@ -1,0 +1,40 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+
+
+{% block title %}
+    Round {{ group.round_number }} of {{ Constants.num_rounds }}
+{% endblock %}
+
+{% block content %}
+
+
+    <hr> </hr>
+
+    <h4><b>Choose your contribution</b></h4>
+
+    <p>
+        The threshold is: <b>{{ group.threshold }}</b>. <br>
+        You income is: <b>55 points</b><br>
+    </p>
+
+    <p> The distribution rule is <b>{{ group.distribution_rule }}</b>.<br>
+        Now you can make a decision on <b>your contribution</b> to the group project for this round.<br>
+        Please submit your contribution in integers, <b> between 0 and 55 points </b>.
+    </p>
+
+
+    <hr> <hr>
+
+
+    {% formfield player.contribution with label="My contribution to the group project is:" %}
+
+
+<hr> </hr>
+
+    {% next_button %}
+
+<hr> </hr>
+    <p> <i>Help: If you have vital questions, you can email the researcher (Jedrzej) at 201811497@post.au.dk</i></p>
+{% endblock %}

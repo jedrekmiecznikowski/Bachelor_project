@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+
+{% block title %}
+    Total Earnings
+{% endblock %}
+
+{% block content %}
+
+<hr> </hr>
+
+
+<p> Your cumulative payoff in <b> 25 rounds </b> was: <b>{{ player.earnings_phase1 }} points </b><br>
+
+    </p>
+
+    <p>
+        1 point (token) = <b>{{ Constants.euro_per_point }} DKK.</b><br>
+        Your total earnings are: <b>{{ player.paid }} DKK</b>.
+    </p>
+
+    <p> Please click on the next button to continue to a short survey.</p>
+
+<hr> </hr>
+
+    {% next_button %}
+
+
+<hr> </hr>
+    <p> <i>Help: If you have vital questions, you can email the researcher (Jedrzej) at 201811497@post.au.dk</i></p>
+{% endblock %}
